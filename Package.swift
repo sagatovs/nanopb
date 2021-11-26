@@ -32,10 +32,10 @@ let package = Package(
         .define("PB_ENABLE_MALLOC", to: "1"),
       ],
       swiftSettings: [
-          .unsafeFlags(["-fprofile-instr-generate"], .when(platforms: [.iOS], configuration: .debug))
+        .define("-fprofile-instr-generate", .when(platforms: [.iOS, .tvOS, .macOS], configuration: .debug))
       ],
       linkerSettings: [
-          .unsafeFlags(["-fprofile-instr-generate"], .when(platforms: [.iOS], configuration: .debug))
+        .unsafeFlags(["-fprofile-instr-generate"], .when(platforms: [.iOS], configuration: .debug))
       ]
     ),
     .testTarget(
